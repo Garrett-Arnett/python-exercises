@@ -65,7 +65,7 @@ number_of_items = 3
 offer_expired = False
 premium_member = False
 
-if (number_of_items > 2 and not offer_expired) or premium_member:
+if (number_of_items > 2 or premium_member) and not offer_expired:
     offer_applied = True
 else:
     offer_aplied = False
