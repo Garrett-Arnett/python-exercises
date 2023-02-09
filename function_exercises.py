@@ -15,10 +15,13 @@ string 2, False otherwise.'''
 def is_two(arg):
     if arg == 2:
         return True
+    elif arg == '2':
+        return True
+    elif arg == 2.0:
+        return True
     else:
         return False
-is_two(2)
-
+is_two('two')
 
 # In[1]:
 
@@ -172,7 +175,7 @@ def remove_vowels(arg):
         arg = arg.replace(vowel, '')
     return arg
 remove_vowels('methylchloroisothiazolinone')
-# ^ normally the longest work on a shampoo bottle
+# ^ normally the longest word on a shampoo bottle
 
 
 # In[ ]:
@@ -252,5 +255,10 @@ col_index('AA') returns 27'''
 # In[ ]:
 
 
-def col_index
+def col_index(col_name):
+    index = 0
+    for char in col_name:
+        index = index * 26 + ord(char) - ord('A') + 1
+    return index
+col_index('AB')
 
