@@ -309,19 +309,27 @@ F : 59 - 0'''
 # In[57]:
 
 
-num = int(input("Enter a in integer from 0 to 100: "))
-if num <= 59:
-    print("F")
-elif num > 59 and num <= 66:
-    print("D")
-elif num > 66 and num <= 79:
-    print("C")
-elif num > 79 and num <=87:
-    print("B")
-elif num > 87 and num <=100:
-    print("A")
+while True:
+    
 
+    num = int(input("Enter a in integer from 0 to 100: "))
 
+    if num <= 59:
+        print("F")
+    elif num > 59 and num <= 66:
+        print("D")
+    elif num > 66 and num <= 79:
+        print("C")
+    elif num > 79 and num <=87:
+        print("B")
+    elif num > 87 and num <=100:
+        print("A")
+    
+    user_response = input('Would you like to continue? (y/n) ')
+    if user_response.lower() != 'y':
+        break
+        
+    
 # In[ ]:
 
 
