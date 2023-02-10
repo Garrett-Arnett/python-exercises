@@ -239,7 +239,16 @@ format. Bonus write a function that does the opposite.'''
 # In[ ]:
 
 
-def twelveto24(arg)
+def twelveto24(arg):
+    if arg[-2:] == "AM" and arg[:2] == "12": 
+        return "00" + arg[3:5]
+    elif arg[-2:] == "AM": 
+        return arg[:-2] 
+    elif arg[-2:] == "PM" and arg[:2] == "12": 
+        return arg[:-2]
+    else:
+        return str(int(arg[:2]) + 12) + arg[2:5] 
+print(twelveto24("09:45 PM"))
 
 
 # In[ ]:
