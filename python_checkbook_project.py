@@ -7,6 +7,7 @@
 # transation will be cancelled and the interaction will reset.
 
 
+
 # The user cannot have a balance that will fall under 0. If the user withdraws an amount exceeding 
 # the users current balance, the transaction will be canceled and the interaction will reset.
 
@@ -14,11 +15,14 @@
 
 import os
 
+
 transactions_file = "transactions.txt"
+
 
 def check_file():
     if not os.path.exists(transactions_file):
         open(transactions_file, "w").close()
+
 
 def view_balance():
     check_file()
@@ -28,6 +32,7 @@ def view_balance():
         for line in lines:
             balance += float(line)
         return print('Your current balance is ', '${:.2f}'.format(balance))
+
 
 def get_valid_float(amount):
     while True:
@@ -39,7 +44,8 @@ def get_valid_float(amount):
                 return value
         except ValueError:
             print("Please enter a valid number.")
-    
+
+
 def withdraw(amount):
     if amount < 0:
         print("Error: withdraw amount must be a positive number. Transaction cancelled.")
@@ -56,6 +62,8 @@ def withdraw(amount):
             with open(transactions_file, "a") as f:
                 f.write(str(-amount) + "\n")
                 print('Debit of', '${:.2f}'.format(amount), 'is successful!')
+
+
 def deposit(amount):
     if amount < 0:
         print("Error: deposit amount must be a positive number. Transaction cancelled.")
@@ -64,7 +72,11 @@ def deposit(amount):
     with open(transactions_file, "a") as f:
         f.write(str(amount) + "\n")
     print('Credit of ' '${:.2f}'.format(amount) ,'is successful!')
+
+    
 print('~~~ Welcome to your terminal checkbook! ~~~')
+
+
 while True:
     print('What would you like to do?\n\n1) View current balance\n2) Record a debit (Withdraw)\n3) Record a credit (Deposit)\n4) Exit')
     num = input('Your Choice? ')
