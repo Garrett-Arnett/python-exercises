@@ -84,45 +84,51 @@ Here is an example of what using the program might look like:
     Thanks, have a great day! '''
 
 import os
+
 transactions_file = "transactions.txt"
+
 def check_file():
     if not os.path.exists(transactions_file):
         open(transactions_file, "w").close()
+
 def view_balance():
     check_file()
     with open(transactions_file, "r") as f:
         lines = f.readlines()
-        balance = 0
+        balance = 0.0
         for line in lines:
-            balance += int(line)
-        return print('Your current balance is ', '${}'.format(balance))
+            balance += float(line)
+        return print('Your current balance is ', '${:.2f}'.format(balance))
+
 def withdraw(amount):
     check_file()
     with open(transactions_file, "a") as f:
         f.write(str(-amount) + "\n")
+
 def deposit(amount):
     check_file()
     with open(transactions_file, "a") as f:
         f.write(str(amount) + "\n")
+
 while True:
-    print('What would you like to do?\n\n1) view current balance\n2) record a debit (withdraw)\n3) record a credit (deposit)\n4) exit')
+    print('What would you like to do?\n\n1) View current balance\n2) Record a debit (Withdraw)\n3) Record a credit (Deposit)\n4) Exit')
     num = int(input('Your Choice? '))
-    
+
     if num == 1:
         view_balance()
-        continue 
+        continue
     elif num == 2:
-        amount = int(input('Enter the amount of the debit: '))
+        amount = float(input('Enter the amount of the debit: '))
         withdraw(amount)
-        print(('Debit of', '${}'.format(amount), 'is successful!'))
+        print(('Debit of', '${:.2f}'.format(amount), 'is successful!'))
         continue
     elif num == 3:
-        amount = int(input('Enter the amount of the withdraw: '))
+        amount = float(input('Enter the amount of the withdraw: '))
         deposit(amount)
-        print('Credit of', '${}'.format(amount),' is successful!')
+        print('Credit of', '${:.2f}'.format(amount),' is successful!')
         continue
     elif num == 4:
         print('Thank you, goodbye!')
         break
-    elif num != (1, 2, 3, 4):
+    else:
         print('Invalid Choice')
